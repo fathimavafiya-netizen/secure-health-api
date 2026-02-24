@@ -17,7 +17,13 @@ pipeline {
 
     stage('Test') {
       steps {
-        bat 'docker run --rm health-api:local python -m pytest -q'
+        bat '''
+        docker run --rm ^
+          -v %cd%:/app ^
+          -w /app ^
+          health-api:local ^
+          python -m pytest --junitxml=pytest.xml
+        '''
       }
       post {
         always {
