@@ -26,7 +26,7 @@ def data_minimize(payload):
     #allowed = {k: payload[k] for k in ['id','name','dob','consent'] if k in payload}
     allowed = {k: payloads[k] for k in ['id','name','dob','consent'] if k in payload}
     return allowed
-    return allowed
+    
 
 def enforce_consent(payload):
     if not payload.get('consent', False):
